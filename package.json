@@ -15,6 +15,8 @@
     "test-all": "npm run check-types && npm run check-format && npm run check-lint && npm run build"
   },
   "dependencies": {
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.2",
     "next": "12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0"
@@ -29,8 +31,8 @@
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.0",
     "prettier": "^2.6.2",
-    "typescript": "^4.6.4",
-    "husky": "^7.0.0"
+    "typescript": "^4.6.4"
   }
 }
