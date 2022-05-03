@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import getArticles from "../services/getArticles";
-
+import populateArticles from "../../services/populatingArticles";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
-    case "GET": {
-      return getArticles(res);
+    case "POST": {
+      return populateArticles(req, res);
     }
     default: {
       throw new Error("Method not found");

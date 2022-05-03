@@ -1,33 +1,27 @@
-import { connectToDatabase } from "util/connectMongo";
+import ArticleModel from "models/Article";
+import { dbConnect } from "util/connectMongo";
+import { NextApiResponse } from "next";
 
-export default async function getArticles(req, res) {
+/**
+ * API to fetch articles
+ * @param res Request response that will be sent
+ * @returns All the posts that were requested
+ */
+
+export default async function getArticles(res: NextApiResponse) {
   try {
-    // connect to the database
-    let { db } = await connectToDatabase();
-    // fetch the posts
-    let posts = await db
-      .collection("articles")
-      .find({})
-      .sort({ published: -1 })
-      .toArray();
-    // return the posts
+    await dbConnect();
+    // Fetch the posts using the ArticleModel checking for type
+    const articles = await ArticleModel.find();
+
     return res.json({
-      message: JSON.parse(JSON.stringify(posts)),
+      message: JSON.parse(JSON.stringify(articles)),
       success: true,
     });
-  } catch (error) {
-    // return the error
+  } catch (error: any) {
     return res.json({
-      message: new Error(error).message,
+      message: new Error(error),
       success: false,
     });
   }
 }
-
-/*
-
-res
-  .status(200)
-  .json({ message: "Fullstack Challenge 2021 🏅 - Space Flight News" });
-
-  */
