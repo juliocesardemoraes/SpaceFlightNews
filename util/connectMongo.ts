@@ -23,7 +23,6 @@ export async function dbConnect() {
       return;
     }
     const mongoUri: string | any = MONGO_URI;
-    console.log(mongoUri);
     connection = await mongoose.connect(mongoUri, {
       dbName: MONGO_DB,
     });
