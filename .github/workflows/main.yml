@@ -8,5 +8,4 @@ jobs:
     steps:
       - name: Hourly cron job
         run: |
-          curl --location --request POST 
-          'https://space-flight-news-seven.vercel.app//api/articles/populate'
+          curl --location --request POST 'https://space-flight-news-seven.vercel.app//api/articles/populate'
