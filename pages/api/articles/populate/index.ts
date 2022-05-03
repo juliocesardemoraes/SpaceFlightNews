@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import populateArticles from "../../services/populatingArticles";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
-    case "POST": {
+    case "GET": {
       return await populateArticles(req, res);
     }
     default: {

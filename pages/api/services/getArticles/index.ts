@@ -19,6 +19,7 @@ export default async function getArticles(res: NextApiResponse) {
       success: true,
     });
   } catch (error: any) {
+    console.log(error);
     return res.json({
       message: new Error(error),
       success: false,
