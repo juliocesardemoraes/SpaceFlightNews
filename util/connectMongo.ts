@@ -22,7 +22,8 @@ export async function dbConnect() {
     if (connection?.isConnected) {
       return;
     }
-    connection = await mongoose.connect(MONGO_URI);
+    const connectionURI: string | any = process.env.MONGO_VERCEL_URI;
+    connection = await mongoose.connect(connectionURI);
     return connection;
   } catch (error) {
     throw new Error("Coudn't connect to the database" + error);
