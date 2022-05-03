@@ -10,6 +10,8 @@ if (!MONGO_DB) {
   throw new Error("Define the MONGODB_DB environmental variable");
 }
 
+let connection: any;
+
 /**
  * Connects to the database
  * @returns {mongoose}: Database connection online
@@ -17,11 +19,14 @@ if (!MONGO_DB) {
 
 export async function dbConnect() {
   try {
+    if (connection?.isConnected) {
+      return;
+    }
     const mongoUri: string | any = MONGO_URI;
-    const connected = await mongoose.connect(mongoUri, {
+    connection = await mongoose.connect(mongoUri, {
       dbName: MONGO_DB,
     });
-    return connected;
+    return connection;
   } catch (error) {
     throw new Error("Coudn't connect to the database" + error);
   }
