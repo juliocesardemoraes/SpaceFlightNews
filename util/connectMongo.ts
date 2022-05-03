@@ -14,7 +14,7 @@ let connection: any;
 
 /**
  * Connects to the database
- * @returns {mongoose}: Database connection online
+ * @returns {Promise}: Database connection online
  */
 
 export async function dbConnect() {
@@ -22,10 +22,7 @@ export async function dbConnect() {
     if (connection?.isConnected) {
       return;
     }
-    const mongoUri: string | any = MONGO_URI;
-    connection = await mongoose.connect(mongoUri, {
-      dbName: MONGO_DB,
-    });
+    connection = await mongoose.connect(MONGO_URI);
     return connection;
   } catch (error) {
     throw new Error("Coudn't connect to the database" + error);
