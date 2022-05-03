@@ -1,8 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import type { NextApiRequest, NextApiResponse } from "next";
+import getArticleById from "../services/getArticleById";
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  res
-    .status(200)
-    .json({ message: "Fullstack Challenge 2021 🏅 - Space Flight News" });
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  switch (req.method) {
+    case "GET": {
+      return await getArticleById(req, res);
+    }
+    default: {
+      throw new Error("Method not found");
+    }
+  }
 };
