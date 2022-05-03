@@ -1,7 +1,7 @@
 name: Hourly cron job
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '0 12 * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
