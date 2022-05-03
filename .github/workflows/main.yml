@@ -1,4 +1,4 @@
-name: Hourly cron job
+name: Cron to update articles database
 on:
   schedule:
     - cron: '0 12 * * *'
