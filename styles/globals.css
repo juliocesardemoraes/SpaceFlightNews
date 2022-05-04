@@ -1,16 +1,22 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:wght@300;400;500;700&display=swap");
+:root {
+  --primary-dark: #1e2022;
+  --secundary-dark: #302e53;
+  --primary-light: #d07017;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Condensed", sans-serif !important;
 }
 
-* {
-  box-sizing: border-box;
+p {
+  font-family: "Roboto Condensed", sans-serif !important;
+  font-weight: 300;
+  line-height: 1.5rem;
+  letter-spacing: 0.1rem;
 }
