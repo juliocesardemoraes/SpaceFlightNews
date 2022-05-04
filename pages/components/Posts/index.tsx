@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import styles from "../../../styles/Posts.module.css";
@@ -12,9 +13,14 @@ interface Iprops {
 
 const PostLoader = (props: Iprops) => {
   const [data, setData] = useState([]);
+  const [dataPaginated, setDataPaginated] = useState([]);
+  const [counter, setCounter] = useState(1);
   const [isLoading, setLoading] = useState(false);
 
-  console.log(props);
+  const handleSeeMore = (data: any) => {
+    if (data !== undefined) setDataPaginated(data.slice(0, 10 * counter));
+    setCounter(counter + 1);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -34,6 +40,7 @@ const PostLoader = (props: Iprops) => {
         }
 
         setLoading(false);
+        handleSeeMore(data.message);
       });
 
     const sortByDate = (a: any, b: any) => {
@@ -56,48 +63,64 @@ const PostLoader = (props: Iprops) => {
 
   // render data
   return (
-    <Box className={styles.article}>
-      {data.map((item: any) => {
-        return (
-          <Grid container key={item.id} className={styles.article__grid}>
-            <Grid item xs={6} className={styles.article__item__left}>
-              <img
-                className={styles.article__photo}
-                src={item.imageUrl}
-                alt="space image"
-              ></img>
-            </Grid>
-            <Grid item xs={4} className={styles.article__item__right}>
-              <Typography variant="h6" className={styles.article__item__title}>
-                {item.title}
-              </Typography>
-              <Box className={styles.article__item__container}>
-                <Typography variant="h6" className={styles.article__item__date}>
-                  {item.publishedAt}
+    <>
+      <Box className={styles.article}>
+        {dataPaginated.map((item: any) => {
+          return (
+            <Grid container key={item.id} className={styles.article__grid}>
+              <Grid item xs={6} className={styles.article__item__left}>
+                <img
+                  className={styles.article__photo}
+                  src={item.imageUrl}
+                  alt="space image"
+                ></img>
+              </Grid>
+              <Grid item xs={4} className={styles.article__item__right}>
+                <Typography
+                  variant="h6"
+                  className={styles.article__item__title}
+                >
+                  {item.title}
                 </Typography>
+                <Box className={styles.article__item__container}>
+                  <Typography
+                    variant="h6"
+                    className={styles.article__item__date}
+                  >
+                    {item.publishedAt}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    className={styles.article__item__button}
+                    href={item.url}
+                    target="_blank"
+                  >
+                    Acessar
+                  </Button>
+                </Box>
+                <p>{item.summary}</p>
                 <Button
+                  className={styles.article__seemore}
                   variant="contained"
-                  className={styles.article__item__button}
-                  href={item.url}
+                  href={"#"}
                   target="_blank"
                 >
-                  Acessar
+                  Veja mais
                 </Button>
-              </Box>
-              <p>{item.summary}</p>
-              <Button
-                className={styles.article__seemore}
-                variant="contained"
-                href={"#"}
-                target="_blank"
-              >
-                Veja mais
-              </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        );
-      })}
-    </Box>
+          );
+        })}
+        <Box className={styles.article__seemore__posts}>
+          <Button
+            onClick={() => handleSeeMore(data)}
+            className={styles.article__seemore__button}
+          >
+            Ver mais postagens
+          </Button>
+        </Box>
+      </Box>
+    </>
   );
 };
 

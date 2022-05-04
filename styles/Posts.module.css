@@ -72,3 +72,15 @@
   font-weight: 300 !important;
   font-size: 0.5rem !important;
 }
+
+.article__seemore__posts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article__seemore__button {
+  background: #fff !important;
+  color: var(--secundary-dark) !important;
+  border: 1px solid var(--primary-light) !important;
+}
