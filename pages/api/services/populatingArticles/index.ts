@@ -45,7 +45,9 @@ export default async function populateArticles(
     };
 
     await axios
-      .get("https://api.spaceflightnewsapi.net/v3/articles")
+      .get("https://api.spaceflightnewsapi.net/v3/articles", {
+        params: { _limit: 200 },
+      })
       .then((response) => {
         articlesFromSpace = response.data;
       })

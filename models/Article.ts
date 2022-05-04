@@ -1,4 +1,4 @@
-import { getModelForClass, mongoose, prop } from "@typegoose/typegoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
 
 class ArticleClass {
   @prop()
@@ -21,8 +21,8 @@ class ArticleClass {
   public featured!: Boolean;
   @prop()
   public launches: any;
-  @prop({ type: String, required: false, default: [] })
-  public events!: mongoose.Types.Array<string>;
+  @prop()
+  public events!: any;
 }
 const ArticleModel = getModelForClass(ArticleClass);
 
