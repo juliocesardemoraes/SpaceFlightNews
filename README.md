@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+:rocket: SPACE FLIGHT NEWS WEB APP:rocket:
 
-## Getting Started
+## Description
 
-First, run the development server:
+App that renders articles about the space.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- React.js
+- Node.js
+- Mongo(Database)
+- Mongoose(Mongo ORM)
+- Husky(Pre-commit lib)
+- Typescript, JSX, JAVASCRIPT(Languages)
+- Github actions(CRON)
+- Vercel (Deployment)
+- ESLINT & PRETTIER(Code formatting)
+- TRELLO
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## How to Run IT
+0-Install yarn https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1-Run command yarn
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2-Create .env from .env.example. Use your own variables from a mongo database. You must have a spaceflightapi database, probably.
 
-## Learn More
+3-yarn build && yarn start
 
-To learn more about Next.js, take a look at the following resources:
+## Extra
+1 - Trello Workflow for this project - https://trello.com/invite/b/ZEB82jff/6d15379e2a07487b2d342d0a01b80556/spaceflightnews
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2 - Insomnia Requests folder into docs/insomnia in this project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<i>This was a challenge by Coodesh</i>
