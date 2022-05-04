@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "c4e85cc5-81f8-4382-a1ce-1183795fe8e8",
+    "name": "Fullstack Challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Production",
+      "item": [
+        {
+          "name": "Articles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{production_route}}/api/articles",
+              "host": ["{{production_route}}"],
+              "path": ["api", "articles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Article Populate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://space-flight-news-seven.vercel.app//api/articles/populate",
+              "protocol": "https",
+              "host": ["space-flight-news-seven", "vercel", "app"],
+              "path": ["", "api", "articles", "populate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fullstack Challenge Message",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{production_route}}/api",
+              "host": ["{{production_route}}"],
+              "path": ["api"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Article By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{production_route}}/api/articles/14914",
+              "host": ["{{production_route}}"],
+              "path": ["api", "articles", "14914"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Development",
+      "item": [
+        {
+          "name": "Articles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{local_route}}/api/articles",
+              "host": ["{{local_route}}"],
+              "path": ["api", "articles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Article Populate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{local_route}}/api/articles/populate",
+              "host": ["{{local_route}}"],
+              "path": ["api", "articles", "populate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Article By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{local_route}}/api/articles/62715f054cfba1f5a08b9d2d",
+              "host": ["{{local_route}}"],
+              "path": ["api", "articles", "62715f054cfba1f5a08b9d2d"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fullstack Challenge Message Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{local_route}}/api",
+              "host": ["{{local_route}}"],
+              "path": ["api"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

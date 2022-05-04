@@ -10,16 +10,21 @@ interface Iprops {
   search: string;
   order: IFilter;
 }
+/**
+ * This component renders the posts
+ * @param props Iprops
+ * @returns {JSX.Element}
+ */
 
 const PostLoader = (props: Iprops) => {
-  const [data, setData] = useState([]);
   const [dataPaginated, setDataPaginated] = useState([]);
   const [counter, setCounter] = useState(1);
   const [isLoading, setLoading] = useState(false);
 
-  const handleSeeMore = (data: any) => {
+  const handleSeeMore = (data: any, button: boolean) => {
     if (data !== undefined) setDataPaginated(data.slice(0, 10 * counter));
-    setCounter(counter + 1);
+
+    if (button === true) setCounter(counter + 1);
   };
 
   useEffect(() => {
@@ -27,20 +32,22 @@ const PostLoader = (props: Iprops) => {
     fetch("api/articles")
       .then((res) => res.json())
       .then((data) => {
+        let resultFilter = null;
         if (props?.order.filter !== FilterPossibilities.null) {
           data.message.sort(sortByDate);
         }
         if (props?.search !== "") {
-          const resultFilter = data.message.filter((item: any) =>
+          resultFilter = data.message.filter((item: any) =>
             item.title.toLowerCase().includes(props?.search.toLowerCase())
           );
-          setData(resultFilter);
-        } else {
-          setData(data.message);
         }
 
+        if (resultFilter !== null && props?.search !== "") {
+          handleSeeMore(resultFilter, false);
+        } else {
+          handleSeeMore(data.message, false);
+        }
         setLoading(false);
-        handleSeeMore(data.message);
       });
 
     const sortByDate = (a: any, b: any) => {
@@ -59,7 +66,7 @@ const PostLoader = (props: Iprops) => {
   }, [props]);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  if (!dataPaginated) return <p>No profile data</p>;
 
   // render data
   return (
@@ -113,7 +120,7 @@ const PostLoader = (props: Iprops) => {
         })}
         <Box className={styles.article__seemore__posts}>
           <Button
-            onClick={() => handleSeeMore(data)}
+            onClick={() => handleSeeMore(dataPaginated, true)}
             className={styles.article__seemore__button}
           >
             Ver mais postagens
