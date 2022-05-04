@@ -1,13 +1,8 @@
 import mongoose from "mongoose";
-import { MONGO_URI, MONGO_DB } from "../config/enviromentVariables";
 
 // Check if the mongo variables exist
-if (!MONGO_URI) {
+if (!process.env.MONGO_VERCEL_URI) {
   throw new Error("Define the MONGODB_URI environmental variable");
-}
-
-if (!MONGO_DB) {
-  throw new Error("Define the MONGODB_DB environmental variable");
 }
 
 let connection: any;
